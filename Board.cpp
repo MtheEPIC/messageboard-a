@@ -1,6 +1,5 @@
 #include "Board.hpp"
 #include "Direction.hpp"
-using ariel::Direction;
 
 #include <iostream>
 #include <stdexcept>
@@ -12,6 +11,13 @@ namespace ariel {
 	Board::Board()
 	{
 		
+	}
+	Board::Board(UI rows, UI cols)
+	{
+		if (rows == 0 || cols == 0)
+		{
+			throw std::out_of_range("negative input");
+		}
 	}
 	Board::~Board()
 	{
