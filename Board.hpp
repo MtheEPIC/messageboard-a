@@ -14,7 +14,7 @@ namespace ariel {
 		~Board();
 		void post(UI, UI, ariel::Direction, std::string);
 		std::string read(UI, UI, ariel::Direction, UI);
-		void show();
+		/*void after tests*/ std::string show();
 		
 		// public only for tests
 		inline UI get_rows() {return this->_ROWS;}

@@ -27,13 +27,13 @@ namespace ariel {
 	{
 		
 	}
-	std::string Board::read(UI x, UI y, ariel::Direction dir, UI length)
+	string Board::read(UI x, UI y, ariel::Direction dir, UI length)
 	{
-		return " ";
+		return "";
 	}
-	void Board::show()
+	string Board::show()
 	{
-		
+		return "";
 	}
 }
 
