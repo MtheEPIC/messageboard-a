@@ -23,6 +23,11 @@ TEST_CASE("Post")
 {
 	Board br;
 	CHECK_THROWS(br.post(0, 0, Direction::Horizontal, ""));
+	CHECK_THROWS(br.post(0, 0, Direction::Vertical, ""));
+	
+	Board br2(1, 1);
+	CHECK_THROWS(br.post(0, 0, Direction::Horizontal, ""));
+	CHECK_THROWS(br.post(0, 0, Direction::Vertical, ""));
 }
 TEST_CASE("Read")
 {
@@ -35,6 +40,16 @@ TEST_CASE("Read")
 	CHECK_THROWS(br.read(0, 0, Direction::Horizontal, 25));
 	CHECK(br.read(0, 0, Direction::Horizontal, 24).size() == 24);
 	CHECK(br.read(0, 0, Direction::Horizontal, 5).size() == 5);
+	
+	Board br2;
+	CHECK_THROWS(br2.read(0, 0, Direction::Vertical, 0));
+	CHECK(br2.read(0, 0, Direction::Vertical, 5).size() == 0);
+	
+	br2.post(0, 0, Direction::Vertical, "string with length of 24");
+	CHECK_THROWS(br2.read(0, 0, Direction::Vertical, 0));
+	CHECK_THROWS(br2.read(0, 0, Direction::Vertical, 25));
+	CHECK(br2.read(0, 0, Direction::Vertical, 24).size() == 24);
+	CHECK(br2.read(0, 0, Direction::Vertical, 5).size() == 5);
 }
 TEST_CASE("Show")
 {
