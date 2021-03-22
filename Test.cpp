@@ -5,7 +5,7 @@
 using namespace ariel;
 using namespace std;
 
-TEST_CASE("Bad Input")
+TEST_CASE("Bad Class Init")
 {
 	CHECK_THROWS(new Board(0, 0));
 	CHECK_THROWS(new Board(1, 0));
@@ -54,6 +54,20 @@ TEST_CASE("Show")
 	br.post(1, 0, Direction::Horizontal, "abc");
 	br.post(2, 0, Direction::Horizontal, "abc");
 	CHECK(br.show() == "abc\nabc\nabc");
+	
+	br.post(0, 0, Direction::Horizontal, "123");
+	CHECK(br.show() == "123\nabc\nabc");
+	
+	br.post(0, 0, Direction::Vertical, "123");
+	CHECK(br.show() == "123\n2bc\n3bc");
+	
+	br.post(0, 1, Direction::Vertical, "123");
+	br.post(0, 2, Direction::Vertical, "123");
+	CHECK(br.show() == "123\n222\n333");
+	
+	br.post(1, 0, Direction::Horizontal, "123");
+	br.post(2, 0, Direction::Horizontal, "123");
+	CHECK(br.show() == "123\n123\n123");
 	
 	Board br1;
 	br.post(1, 1, Direction::Horizontal, "abc");
